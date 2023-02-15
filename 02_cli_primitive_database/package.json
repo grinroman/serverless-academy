@@ -1,0 +1,15 @@
+{
+   "name": "02_cli_primitive_database",
+   "version": "1.0.0",
+   "description": "cli app of primitive databse",
+   "main": "app.js",
+   "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+   },
+   "author": "Roman Hryn <grinromchk@gmail.com>",
+   "license": "ISC",
+   "dependencies": {
+      "inquirer": "^9.1.4"
+   },
+   "type": "module"
+}

@@ -1,0 +1,4 @@
+[{"name":"kek","gender":"male","age":"78"},
+{"name":"jora","gender":"female","age":"89"},
+{"name":"vasilii","gender":"female","age":"55"}
+]
