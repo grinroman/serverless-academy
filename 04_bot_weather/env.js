@@ -1,0 +1,4 @@
+const BOT_TOKEN = '5973509735:AAEixLJuFQraqC5f2eSOp1co6LbFLVFfkao';
+const WEATHER_API_KEY = '05e98c3418f230712dc3b175ddcafc75';
+
+module.exports = { BOT_TOKEN, WEATHER_API_KEY };

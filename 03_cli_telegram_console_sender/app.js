@@ -1,33 +1,24 @@
+const { BOT_TOKEN, CHAT_ID } = require('./env');
+
 const { Command } = require('commander');
 const program = new Command();
 
 const TelegramApi = require('node-telegram-bot-api');
 
-const _token = '6074253125:AAGLA8N0a7sDOZ7yA6aF4r9Tlo1DbeBMm20';
-
 const _fileOptions = {
-   filename: 'photo u send to telegram',
+   filename: 'photo',
    contentType: 'image/png',
 };
 
-const bot = new TelegramApi(_token, { polling: true });
+const bot = new TelegramApi(BOT_TOKEN, { polling: true });
 
 program
    .command('m')
    .description('Sends a message to telegram')
    .argument('<message>', 'string you want to send to telegram')
-   .action((textMessage) => {
-      bot.on('message', async (message) => {
-         const _chatId = message.chat.id;
-
-         console.log(_chatId);
-
-         console.log('Sending MESSAGE to telegram: ' + textMessage);
-
-         await bot.sendMessage(_chatId, textMessage, {}, _fileOptions);
-
-         process.exit();
-      });
+   .action(async (textMessage) => {
+      await bot.sendMessage(CHAT_ID, textMessage);
+      process.exit();
    });
 
 program
@@ -35,19 +26,11 @@ program
    .description('Sends a photo to telegram')
    .argument(
       '<path>',
-      'path to the photo in your local machine you want to send'
+      'path to the photo in your pc you want to send'
    )
-   .action((srcToPhoto) => {
-      bot.on('message', async (message) => {
-         const _chatId = message.chat.id;
-
-         console.log(_chatId);
-
-         console.log('Sending MESSAGE to telegram: ' + srcToPhoto);
-
-         await bot.sendPhoto(_chatId, srcToPhoto);
-         process.exit();
-      });
+   .action(async (srcToPhoto) => {
+      await bot.sendPhoto(CHAT_ID, srcToPhoto, {}, _fileOptions);
+      process.exit();
    });
 
 program.parse();

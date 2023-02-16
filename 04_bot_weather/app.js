@@ -2,10 +2,11 @@ const TelegramBot = require('node-telegram-bot-api');
 
 const { getWeatherData } = require('./services/getCityWeather');
 const { prettifyWeatherResponse } = require('./utils/responsePrettyfier');
+const { BOT_TOKEN } = require('./env');
 
-const token = '5973509735:AAEixLJuFQraqC5f2eSOp1co6LbFLVFfkao';
+// const token = '5973509735:AAEixLJuFQraqC5f2eSOp1co6LbFLVFfkao';
 
-const bot = new TelegramBot(token, { polling: true });
+const bot = new TelegramBot(BOT_TOKEN, { polling: true });
 
 const main_menu = {
    reply_markup: {

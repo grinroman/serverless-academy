@@ -2,8 +2,6 @@ const readline = require('readline');
 
 const commandList = require('./mocks/commandList');
 
-const linePrettyfier = (line) => line.replace(/\s\s+/g, ' ').split(' ');
-
 const showHelp = () => {
    commandList.forEach((value, key) => {
       console.log(`${key}: ${value.description}`);
@@ -12,6 +10,10 @@ const showHelp = () => {
 };
 
 let rl = readline.createInterface(process.stdin, process.stdout);
+
+const linePrettyfier = (line) => line.replace(/\s\s+/g, ' ').split(' ');
+const valideteInput = (incomingString) =>
+   incomingString.length > 1 && incomingString.length <= 10;
 
 function cliAppFlow() {
    return new Promise(function (resolve) {
@@ -28,27 +30,33 @@ function cliAppFlow() {
 
          line = linePrettyfier(line);
 
-         rl.question(`enter required command> `, (command) => {
-            command = command.trim();
+         if (valideteInput(line)) {
+            rl.question(`enter required command> `, (command) => {
+               command = command.trim();
 
-            if (command === 'exit') {
-               rl.close();
-               return;
-            }
+               if (command === 'exit') {
+                  rl.close();
+                  return;
+               }
 
-            if (commandList.has(command)) {
-               console.log(`\n${commandList.get(command).handler(line)}\n`);
-            } else {
-               console.log('unhandeled command! try again!');
-            }
+               if (commandList.has(command)) {
+                  console.log(`\n${commandList.get(command).handler(line)}\n`);
+               } else {
+                  console.log('unhandeled command! try again!');
+               }
 
-            showHelp(commandList);
-
-            rl.prompt();
-         });
+               showHelp(commandList);
+            });
+         }
+         {
+            console.log(
+               'Enter more than 1  and less than 10 word or number splitted by space!'
+            );
+         }
+         rl.prompt();
       }).on('close', function () {
          console.log('Closing sorting app ...');
-         resolve('The program was sucessfully executed');
+         resolve('The program was sucessfully closed');
       });
    });
 }

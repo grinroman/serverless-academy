@@ -1,0 +1,4 @@
+const BOT_TOKEN = '5886362173:AAGiK2dCFBwXxrn2GRzr2QJW0NIVkmmPIZc';
+const CHAT_ID = 1008115641;
+
+module.exports = { BOT_TOKEN, CHAT_ID };

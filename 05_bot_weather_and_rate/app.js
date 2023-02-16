@@ -6,12 +6,9 @@ const {
    prettifyWeatherResponse,
    prettifyCurrencyResponse,
 } = require('./utils/responsePrettyfier');
+const { BOT_TOKEN } = require('./env');
 
-const token = '5435731234:AAH0lEhObKrxr6nW6FxNGruwF27joCNAnKk';
-
-const bot = new TelegramBot(token, { polling: true });
-
-let intervalId = null;
+const bot = new TelegramBot(BOT_TOKEN, { polling: true });
 
 const main_menu = {
    reply_markup: {
