@@ -20,14 +20,23 @@ const getOneEndpoint = async (endpointURL) => {
 };
 
 (async function () {
+   const statusResults = { trues: 0, falses: 0 };
+
    for (let i = 0; i < 20; i++) {
       const data = await getOneEndpoint(endpointList[i]);
-      if (typeof data === 'object') {
-         console.log(
-            `[Success] ${endpointList[i]}: isDone - ${findIsDone(data)}`
-         );
+      const status = findIsDone(data);
+      if (typeof status !== 'string') {
+         if (status) {
+            statusResults.trues += 1;
+         } else {
+            statusResults.falses += 1;
+         }
+
+         console.log(`[Success] ${endpointList[i]}: isDone - ${status}`);
       } else {
          console.log(data);
       }
    }
+   console.log(`Found True values: ${statusResults.trues},`);
+   console.log(`Found False values: ${statusResults.falses},`);
 })();
