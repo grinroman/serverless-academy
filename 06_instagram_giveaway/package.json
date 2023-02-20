@@ -1,0 +1,12 @@
+{
+  "name": "06_instagram_giveaway",
+  "version": "1.0.0",
+  "description": "> To run the app you just need tu run `node app` command in your terminal",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Roman Hryn <grinromchik@gmail.com>",
+  "license": "ISC"
+}

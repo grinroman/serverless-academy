@@ -1,0 +1,12 @@
+{
+  "name": "07_grouping_vacations",
+  "version": "1.0.0",
+  "description": "> To run the app use command `node app`.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Roman Hryn <grinromchik@gmail.com>",
+  "license": "ISC"
+}
