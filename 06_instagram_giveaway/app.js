@@ -20,11 +20,11 @@ function uniqueValues() {
          amountOfUniqueRecords = uniqueValues.size;
       })
    ).then(() => {
+      console.log('Unique usernames: ', amountOfUniqueRecords);
       console.log(
          'Time that was spent for 1st task: ',
          (new Date() - start) / 1000
       );
-      console.log('Unique usernames: ', amountOfUniqueRecords);
    });
 }
 
@@ -53,7 +53,7 @@ function existInAllFiles() {
 
    Promise.all(
       fileNames.map(async (fileName) => {
-         let fileContent = await fs.readFileSync(fileName, {
+         let fileContent = await fsp.readFile(fileName, {
             encoding: 'utf8',
          });
          fileContent = new Set(fileContent.split('\n'));
@@ -68,11 +68,11 @@ function existInAllFiles() {
          return;
       })
    ).then(() => {
+      console.log('The number of usernames that are in each file', etalonSize);
       console.log(
          'Time that was spent for 2st task: ',
          (new Date() - start) / 1000
       );
-      console.log('The number of usernames that are in each file', etalonSize);
    });
 }
 

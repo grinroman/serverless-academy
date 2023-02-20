@@ -6,5 +6,6 @@ Then you will receive data from 20 endpoints with information about the status o
 
 You will receive data 1 after 1 (queries will run sequentially) - so fetching imitates sync behavior.
 There are 2 cases:
-- we receive a response with the status code ```200```. Then we just run the function to find the ```isDone``` prop in the object and then get its value
-- we receive a response with __another__ status code that leads that something going wrong. In such case, we will make an attempt to retrieve the fetching by this URL 2 more times. If in the last time, we will get an error again we will message the user about that.
+
+-  we receive a response with the status code `200`. Then we just run the function to find the `isDone` prop in the object and then get its value
+-  we receive a response with **another** status code that leads that something going wrong. In such case, we will make an attempt to retrieve the fetching by this URL 2 more times. If in the last time, we will get an error again we will message the user about that.
