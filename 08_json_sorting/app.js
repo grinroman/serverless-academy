@@ -12,9 +12,6 @@ const getOneEndpoint = async (endpointURL) => {
 
       if (i === 2 && data.status !== 200) {
          return `[Fail] ${endpointURL}: The endpoint is unavailable`;
-      } else if (i === 2 && data.status === 200) {
-         data = await data.json();
-         return data;
       }
    }
 };
@@ -25,6 +22,7 @@ const getOneEndpoint = async (endpointURL) => {
    for (let i = 0; i < 20; i++) {
       const data = await getOneEndpoint(endpointList[i]);
       const status = findIsDone(data);
+
       if (typeof status !== 'string') {
          if (status) {
             statusResults.trues += 1;
